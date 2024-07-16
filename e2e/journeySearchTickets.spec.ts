@@ -12,7 +12,9 @@ test.describe('Search tickets', () => {
         await mainPage.defineKidsPassengers(1);
         await mainPage.defineBabyPassengers(1);
         await mainPage.CloseModalPassengers();
-
-
+        await mainPage.defineOneWayandDestination('minas gerais', 'rio de janeiro');
+        await mainPage.defineData(new Date);
+        await mainPage.searchTickets();
+        await mainPage.isShowingTicket('Somente ida', 'Minas Gerais', 'Rio de Janeiro')
     })
 })
