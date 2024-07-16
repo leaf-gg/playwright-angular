@@ -6,5 +6,13 @@ test.describe('Search tickets', () => {
         const mainPage = new MainPage(page);
         
         await mainPage.visit();
+        await mainPage.defineOneWayOnly();
+        await mainPage.OpenModalPassengers();
+        await mainPage.defineAdultPassengers(3);
+        await mainPage.defineKidsPassengers(1);
+        await mainPage.defineBabyPassengers(1);
+        await mainPage.CloseModalPassengers();
+
+
     })
 })

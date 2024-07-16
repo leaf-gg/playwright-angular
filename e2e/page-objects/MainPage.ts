@@ -25,9 +25,9 @@ export default class MainPage {
 
         this.btnOneWay = page.getByTestId('botao-somente-ida');
         this.btnModalPassengers = page.getByTestId('abrir-modal-passageiros');
-        this.btnAddAdult = page.getByTestId('selector-passageiro-adultos');   
-        this.btnAddKids = page.getByTestId('seletor-passageiro-criancas')
-        this.btnAddBaby = page.getByTestId('seletor-passageiro-bebes')
+        this.btnAddAdult = page.getByTestId('seletor-passageiro-adultos').getByRole('button', { name: 'adição' });   
+        this.btnAddKids = page.getByTestId('seletor-passageiro-criancas').getByRole('button', { name: 'adição' });
+        this.btnAddBaby = page.getByTestId('seletor-passageiro-bebes').getByRole('button', { name: 'adição' });;
         this.btnCloseModalPassengers = page.getByTestId('fechar-modal-passageiros');
         this.btnOriginState = page.getByTestId('campo-dropdown-origem');
         this.btnDestinationState = page.getByTestId('campo-dropdown-destino');
@@ -41,4 +41,36 @@ export default class MainPage {
     async visit(){
         await this.page.goto('/')
     }
+
+    async defineOneWayOnly(){
+        await this.btnOneWay.click();
+    }
+
+    async OpenModalPassengers(){
+        await this.btnModalPassengers.click();
+    }
+
+    async defineAdultPassengers(quantity: number){
+        for (let i = 1; i < quantity; i++) {
+           await this.btnAddAdult.click();            
+        }
+    }
+
+    async defineKidsPassengers(quantity: number){
+        for (let i = 0; i < quantity; i++) {
+            await this.btnAddKids.click();            
+         }
+    }
+    
+    async defineBabyPassengers(quantity: number){
+        for (let i = 0; i < quantity; i++) {
+            await this.btnAddBaby.click();            
+         }
+    }
+
+    async CloseModalPassengers(){
+        await this.btnCloseModalPassengers.click();
+    }
+
+
 }
